@@ -7,7 +7,8 @@ Installation Process
 2) Download Redis for Windows.
 3) Set-up/Create your Node-Mailer account.
 4) Set-up/Create your Stripe account.
-5) Integrate Stripe CLI for Windows and listen on endpoint: listen --forward-to https://127.0.0.1:443/cart/stripe/payment-event-hook/ --skip-verify
-6) Configure .env file using the Sample Template provided.
+5) Set-up/Create your AWS S3 Bucket.
+6) Integrate Stripe CLI for Windows and listen on endpoint: listen --forward-to https://127.0.0.1:443/cart/stripe/payment-event-hook/ --skip-verify
+7) Configure .env file using the Sample Template provided.
 
 
