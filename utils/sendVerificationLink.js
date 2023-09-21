@@ -22,7 +22,7 @@ const sendVerificationLink = async (
     const accessToken = await Oauth.getAccessToken();
     const message = {
       from: `ZeroTwo'<${process.env.CLIENTA_MAIL}>`,
-      to: "itz.abk007@gmail.com",
+      to: mailId,
       subject: subject,
       text: `Hello, Greetings from ZeroTwo, Kindly ${text}`,
       html: htmlMessage(verificationLink),
