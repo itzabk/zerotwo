@@ -67,44 +67,6 @@ const deleteSubCategory = asyncErrorHandler(async (req, res, next) => {
   }
 });
 
-// @desc Update Sub-Category
-// @route POST /subcategories/update-subcategory
-// @access Private
-const updateSubCategory = asyncErrorHandler(async (req, res, next) => {
-  const { _id, cat } = req.body;
-  //check if category exists
-  const foundCategory = await Category.findById(cat);
-  if (!foundCategory) {
-    const err = new customError(404, "No Catgeory found");
-    return next(err);
-  }
-  //check if subcategory exists
-  const foundSubCategory = await Subcategory.findById(_id);
-  if (!foundSubCategory) {
-    const err = new customError(404, "Subcategory is not found");
-    return next(err);
-  }
-  //update the Subcategory
-  const updatedSubCategory = await Subcategory.updateOne(
-    { _id: foundSubCategory._id },
-    {
-      $set: {
-        scname: foundSubCategory.scname,
-        cat: ObjectId(foundCategory._id),
-      },
-    },
-    { runValidators: true }
-  );
-  if (updatedSubCategory.nModified === 1) {
-    return res
-      .status(200)
-      .json({ message: "Subcategory updated successfully" });
-  } else {
-    const err = new customError(400, "Subcategory updation failed");
-    return next(err);
-  }
-});
-
 // @desc Get a Sub-Category
 // @route POST /subcategories/
 // @access Private
